@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ies_properties_names">
+        <item>codigoinstitucioneducativa</item>
+        <item>institucioneducativa</item>
+        
+        
+    </string-array>
+
+</resources>

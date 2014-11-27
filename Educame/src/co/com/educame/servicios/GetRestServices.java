@@ -1,27 +1,36 @@
 package co.com.educame.servicios;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import co.com.educame.controladores.AbstractController;
+import co.com.educame.controladores.MainController;
+import co.com.educame.modelo.entidades.FactoryInstitucionEducacionSuperior;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
+public class GetRestServices extends AsyncTask<String, String, String> {
 
-public class GetRestServices  extends AsyncTask<String, String , String>{
+	private AbstractController controller;
 
-	
-	
+	public GetRestServices(AbstractController controller) {
+		this.controller = controller;
+	}
+
 	@Override
 	protected String doInBackground(String... params) {
 		// TODO Auto-generated method stub
-		
-		//http://goo.gl/GdjxX2
-		
-		String url="http://servicedatosabiertoscolombia.cloudapp.net/v1/Ministerio_de_educacion_nacional/ies?$format=json";
+
+		// http://goo.gl/GdjxX2
+
+		String url = params[0];
 		HttpClient cliente = new DefaultHttpClient();
 		HttpGet del = new HttpGet(url);
 
@@ -32,17 +41,20 @@ public class GetRestServices  extends AsyncTask<String, String , String>{
 			HttpEntity entity = resp.getEntity();
 			stringResp = EntityUtils.toString(entity);
 			JSONObject respJSON = new JSONObject(stringResp);
-
 			
+			if(controller instanceof MainController){
+				MainController mainController = (MainController) controller;
+				mainController.processRestFulResponse(respJSON);
+				
+			}
+
 		} catch (Exception e) {
 			Log.i("Erro", e.getMessage());
-			//return TAG_RESPONSE_ERROR;
+			// return TAG_RESPONSE_ERROR;
 
 		}
-		//return TAG_RESPONSE_OK;
+		// return TAG_RESPONSE_OK;
 		return null;
 	}
-	
-	
 
 }

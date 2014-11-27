@@ -1,5 +1,6 @@
 package co.com.educame;
 
+import co.com.educame.controladores.MainController;
 import co.com.educame.servicios.GetRestServices;
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,8 +15,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        GetRestServices getRestService= new GetRestServices();
-        getRestService.execute();
+       MainController mainController = new MainController(this);
+       mainController.getRestFulServices();
     }
 
 
