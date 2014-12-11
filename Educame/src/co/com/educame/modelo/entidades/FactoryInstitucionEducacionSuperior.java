@@ -37,24 +37,73 @@ public class FactoryInstitucionEducacionSuperior implements
 		JSONObject object;
 		InstitucionEducacionSuperior institucionEducacionSuperior;
 		listaInstituciones = new ArrayList<InstitucionEducacionSuperior>();
+		Ubicacion u = new Ubicacion();
+		Departamento departamento = new Departamento();
+		Municipio municipio = new Municipio();
 
 		try {
 			for (int i = 0; i < arreglo.length(); i++) {
-				int j=0;
+				int j = 0;
 				object = arreglo.getJSONObject(i);
 
 				institucionEducacionSuperior = new InstitucionEducacionSuperior();
-				
+
 				institucionEducacionSuperior.setCodigoInstitucion(Integer
-						.parseInt(object
-								.getString(propertyNames[j])));
+						.parseInt(object.getString(propertyNames[j])));
 				j++;
-				
+
 				institucionEducacionSuperior.setNombreInstitucion(object
+						.getString(propertyNames[j]));
+
+				j++;
+				institucionEducacionSuperior.setNombreInstitucion(object
+						.getString(propertyNames[j]));
+				j++;
+				departamento.setCodigo(object.getInt(propertyNames[j]));
+				j++;
+				departamento.setNombre(object.getString(propertyNames[j]));
+				j++;
+				municipio.setCodigo(object.getInt(propertyNames[j]));
+				j++;
+				municipio.setNombre(object.getString(propertyNames[j]));
+				u.setDepartamento(departamento);
+				u.setMunicipio(municipio);
+				institucionEducacionSuperior.setUbicacion(u);
+				j++;
+				institucionEducacionSuperior.setCodigoOrdenInstitucional(object
+						.getInt(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior.setOrdenInstitucional(object
+						.getString(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior
+						.setCodigoOrigenInstitucional(object
+								.getInt(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior
+						.setNombreOrigenInstitucional(object
+								.getString(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior
+						.setCodigoCaracterInstitucional(object
+								.getInt(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior
+						.setNombreCaracterAcademico(propertyNames[j]);
+				j++;
+				institucionEducacionSuperior.setCodigoTipoAcreditacion(object
+						.getInt(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior.setNombreTipoAcreditacion(object
+						.getString(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior.setCodigoMarcoCreacion(object
+						.getInt(propertyNames[j]));
+				j++;
+				institucionEducacionSuperior.setNombreMarcoCreacion(object
 						.getString(propertyNames[j]));
 				
 				listaInstituciones.add(institucionEducacionSuperior);
-				
 
 			}
 		} catch (Exception e) {
@@ -62,5 +111,4 @@ public class FactoryInstitucionEducacionSuperior implements
 		}
 
 	}
-
 }
