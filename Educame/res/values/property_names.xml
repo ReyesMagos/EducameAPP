@@ -4,8 +4,21 @@
     <string-array name="ies_properties_names">
         <item>codigoinstitucioneducativa</item>
         <item>institucioneducativa</item>
-        
-        
+        <item>nombretipoinstitucion</item>
+        <item>codigodepartamentoalfanumerico</item>
+        <item>departamentoies</item>
+        <item>codigomunicipioalfanumerico</item>
+        <item>municipioies</item>
+        <item>codigoordeninstitucional</item>
+        <item>nombreordeninstitucional</item>
+        <item>codigoorigeninstitucional</item>
+        <item>nombreorigeninstitucional</item>
+        <item>codigocaracterinsitucional</item>
+        <item>nombrecaracteracademico</item>
+        <item>codigotipoacreditacion</item>
+        <item>nombretipoacreditacion</item>
+        <item>codigotipomarcocreacion</item>
+        <item>nombretipomarcocreacion</item>
     </string-array>
 
 </resources>

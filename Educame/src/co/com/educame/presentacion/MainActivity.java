@@ -1,5 +1,9 @@
-package co.com.educame;
+package co.com.educame.presentacion;
 
+import co.com.educame.R;
+import co.com.educame.R.id;
+import co.com.educame.R.layout;
+import co.com.educame.R.menu;
 import co.com.educame.controladores.MainController;
 import co.com.educame.servicios.GetRestServices;
 import android.app.Activity;
