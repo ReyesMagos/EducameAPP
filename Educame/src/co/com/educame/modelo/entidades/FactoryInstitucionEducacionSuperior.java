@@ -6,16 +6,20 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.app.Activity;
+
 import co.com.educame.modelo.entidades.interfaces.IFactoryInstitucionEducacionSuperior;
+import co.com.educame.process.impl.ProcessInstitucionEducativaImpl;
 
 public class FactoryInstitucionEducacionSuperior implements
 		IFactoryInstitucionEducacionSuperior {
 
 	private List<InstitucionEducacionSuperior> listaInstituciones;
 	private static FactoryInstitucionEducacionSuperior instance;
+	ProcessInstitucionEducativaImpl processInstitucionEducativaImpl;
 
 	private FactoryInstitucionEducacionSuperior() {
-
+		
 	}
 
 	public static FactoryInstitucionEducacionSuperior getInstance() {
@@ -33,7 +37,9 @@ public class FactoryInstitucionEducacionSuperior implements
 
 	@Override
 	public void createInstitucionesEducacionSuperior(JSONArray arreglo,
-			String[] propertyNames) {
+			String[] propertyNames, Activity activity) {
+		
+		this.processInstitucionEducativaImpl = new ProcessInstitucionEducativaImpl(activity);
 		JSONObject object;
 		InstitucionEducacionSuperior institucionEducacionSuperior;
 		listaInstituciones = new ArrayList<InstitucionEducacionSuperior>();
@@ -52,7 +58,8 @@ public class FactoryInstitucionEducacionSuperior implements
 				
 				institucionEducacionSuperior.setNombreInstitucion(object
 						.getString(propertyNames[j]));
-				
+				//Guradamos en la base de datos
+				this.processInstitucionEducativaImpl.saveInstitucionEducacionSuperior(institucionEducacionSuperior);
 				listaInstituciones.add(institucionEducacionSuperior);
 				
 

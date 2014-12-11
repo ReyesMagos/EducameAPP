@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 
+import android.app.Activity;
 import android.util.JsonReader;
 
 import co.com.educame.modelo.entidades.InstitucionEducacionSuperior;
@@ -11,7 +12,7 @@ import co.com.educame.modelo.entidades.InstitucionEducacionSuperior;
 public interface IFactoryInstitucionEducacionSuperior {
 	
 	List<InstitucionEducacionSuperior> getInstitucionesEducacionSuperior();
-	void createInstitucionesEducacionSuperior(JSONArray arreglo, String[] propertyNames);
+	void createInstitucionesEducacionSuperior(JSONArray arreglo, String[] propertyNames, Activity activity);
 	
 
 }

@@ -23,6 +23,7 @@ public class MainController extends AbstractController {
 		GetRestServices getRestService = new GetRestServices(this);
 		getRestService.execute(url);
 	}
+	
 
 	public void processRestFulResponse(JSONObject respJSON) {
 		JSONArray arregloJSON;
@@ -32,7 +33,7 @@ public class MainController extends AbstractController {
 			arregloJSON = respJSON.getJSONArray("d");
 			FactoryInstitucionEducacionSuperior.getInstance()
 					.createInstitucionesEducacionSuperior(arregloJSON,
-							properties);
+							properties, this.getActivity());
 			dismissProgressDialog();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
