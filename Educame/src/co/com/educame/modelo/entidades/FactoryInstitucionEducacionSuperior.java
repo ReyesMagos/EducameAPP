@@ -51,7 +51,9 @@ public class FactoryInstitucionEducacionSuperior implements
 			for (int i = 0; i < arreglo.length(); i++) {
 				int j = 0;
 				object = arreglo.getJSONObject(i);
-
+				departamento = new Departamento();
+				municipio = new Municipio();
+				u = new Ubicacion();
 				institucionEducacionSuperior = new InstitucionEducacionSuperior();
 
 				institucionEducacionSuperior.setCodigoInstitucion(Integer
@@ -62,7 +64,7 @@ public class FactoryInstitucionEducacionSuperior implements
 						.getString(propertyNames[j]));
 
 				j++;
-				institucionEducacionSuperior.setNombreInstitucion(object
+				institucionEducacionSuperior.setNombreTipoAcreditacion(object
 						.getString(propertyNames[j]));
 
 				//Guradamos en la base de datos

@@ -6,6 +6,7 @@ public class Ubicacion {
 	private Double longitud;
 	private Departamento departamento;
 	private Municipio municipio;
+	
 	public Double getLatitud() {
 		return latitud;
 	}

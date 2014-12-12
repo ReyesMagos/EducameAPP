@@ -4,6 +4,7 @@ public abstract class EntidadTerritorial {
 	
 	private int codigo;
 	private String nombre;
+	
 	public int getCodigo() {
 		return codigo;
 	}

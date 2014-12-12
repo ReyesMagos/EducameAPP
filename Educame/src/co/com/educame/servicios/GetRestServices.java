@@ -16,6 +16,7 @@ import co.com.educame.controladores.MainController;
 public class GetRestServices extends AsyncTask<String, String, String> {
 
 	private AbstractController controller;
+	private JSONObject respu;
 
 	public GetRestServices(AbstractController controller) {
 		this.controller = controller;
@@ -38,20 +39,31 @@ public class GetRestServices extends AsyncTask<String, String, String> {
 			HttpEntity entity = resp.getEntity();
 			stringResp = EntityUtils.toString(entity);
 			JSONObject respJSON = new JSONObject(stringResp);
-			
-			if(controller instanceof MainController){
-				MainController mainController = (MainController) controller;
-				mainController.processRestFulResponse(respJSON);
-				
-			}
+			respu = respJSON;
 
 		} catch (Exception e) {
 			Log.i("Erro", e.getMessage());
 			// return TAG_RESPONSE_ERROR;
+			return "BAD";
 
 		}
 		// return TAG_RESPONSE_OK;
-		return null;
+		return "OK";
+	}
+
+	@Override
+	protected void onPostExecute(String result) {
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);
+		if (result.equals("OK")) {
+			Log.i("whats ok", "OK");
+			if (controller instanceof MainController) {
+				MainController mainController = (MainController) controller;
+				mainController.processRestFulResponse(respu);
+				mainController.showIEs();
+
+			}
+		}
 	}
 
 }

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import co.com.educame.R;
 import co.com.educame.modelo.entidades.FactoryInstitucionEducacionSuperior;
+import co.com.educame.presentacion.MainActivity;
 import co.com.educame.servicios.GetRestServices;
 
 import android.app.Activity;
@@ -23,7 +24,6 @@ public class MainController extends AbstractController {
 		GetRestServices getRestService = new GetRestServices(this);
 		getRestService.execute(url);
 	}
-	
 
 	public void processRestFulResponse(JSONObject respJSON) {
 		JSONArray arregloJSON;
@@ -35,10 +35,17 @@ public class MainController extends AbstractController {
 					.createInstitucionesEducacionSuperior(arregloJSON,
 							properties, this.getActivity());
 			dismissProgressDialog();
+
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+
+	public void showIEs() {
+		MainActivity mainActivity = (MainActivity) getActivity();
+		mainActivity.init(FactoryInstitucionEducacionSuperior.getInstance()
+				.getInstitucionesEducacionSuperior());
 	}
 }
